@@ -1,0 +1,39 @@
+ package com.action; 
+
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+
+import com.jy.framework.util.bean.BeanUtil;
+import com.entity.<ClassName></ClassName>;
+import com.service.<ClassName></ClassName>Service;
+import com.jy.mobile.util.StringUtils;
+import com.jy.mobile.web.action.BaseAction;
+import com.form.<ClassName></ClassName>Form;
+
+ public class <ClassName></ClassName>DispAction extends BaseAction{
+		private <ClassName></ClassName>Service get<ClassName></ClassName>Service(){
+			return (<ClassName></ClassName>Service) super.getBeanService("<className></className>Service");
+		}
+		public ActionForward execute(ActionMapping mapping, ActionForm form,
+				HttpServletRequest request, HttpServletResponse response)
+				throws Exception {
+			try {
+				<ClassName></ClassName>Form theForm = (<ClassName></ClassName>Form) form;
+				String id = theForm.getId();
+				if(StringUtils.notEmpty(id)){
+					<ClassName></ClassName> entity = get<ClassName></ClassName>Service().get<ClassName></ClassName>(id);
+					BeanUtil.copy(theForm, entity);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return mapping.findForward("success");
+		}
+}
+

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<struts-config>
+	<form-beans>
+		<contentForm>
+			<form-bean name="<className></className>Form" type="com.form.<ClassName></ClassName>Form" />
+		</contentForm>
+	</form-beans>
+
+	<action-mappings>
+		<contentAction>
+			<action name="<className></className>Form" path="/<className></className>List"
+				type="com.action.<ClassName></ClassName>ListAction"
+				scope="request" validate="false">
+				<forward name="success" path="/jsp/<className></className>List.jsp" />
+			</action>
+			<action name="<className></className>Form" path="/<className></className>Edit"
+				type="com.action.<ClassName></ClassName>EditAction"
+				scope="request" validate="false">
+				<forward name="success" path="/jsp/<className></className>Edit.jsp" />
+			</action>
+			<action name="<className></className>Form" path="/<className></className>Disp"
+				type="com.action.<ClassName></ClassName>DispAction"
+				scope="request" validate="false">
+				<forward name="success" path="/jsp/<className></className>Disp.jsp" />
+			</action>
+			<action name="<className></className>Form" path="/<className></className>Save"
+				type="com.action.<ClassName></ClassName>SaveAction"
+				scope="request" validate="false">
+				<forward name="success" path="/<className></className>List.do" />
+			</action>
+			<action name="<className></className>Form" path="/<className></className>Dele"
+				type="com.action.<ClassName></ClassName>DeleAction"
+				scope="request" validate="false">
+				<forward name="success" path="/<className></className>List.do" />
+			</action>
+		</contentAction>
+	</action-mappings>
+
+	<!-- Message Resources -->
+	<plug-in className="org.apache.struts.plugins.ModuleConfigVerifier" />
+	<plug-in className="com.jy.mobile.util.UtilDateConverterInitWithPlugin" />
+</struts-config>

@@ -1,0 +1,55 @@
+package com.action;
+
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+
+import com.jy.framework.util.bean.BeanUtil;
+import com.dto.<ClassName></ClassName>DTO;
+import com.entity.<ClassName></ClassName>;
+import com.service.<ClassName></ClassName>Service;
+import com.jy.mobile.util.StringUtils;
+import com.jy.mobile.web.action.BaseAction;
+import com.form.<ClassName></ClassName>Form;
+
+
+public class <ClassName></ClassName>ListAction extends BaseAction {
+	private <ClassName></ClassName>Service get<ClassName></ClassName>Service(){
+		return (<ClassName></ClassName>Service) super.getBeanService("<className></className>Service");
+	}
+	
+	public ActionForward execute(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		<ClassName></ClassName>Form theForm = (<ClassName></ClassName>Form) form;
+		<ClassName></ClassName>DTO dto = new <ClassName></ClassName>DTO();
+		try {
+			BeanUtil.copy(dto, theForm);
+			Map map = get<ClassName></ClassName>Service().get<ClassName></ClassName>List(dto,theForm.getPageno(), theForm.getPagesize());
+			List<<ClassName></ClassName>>entities;
+			if (map != null && map.get("List") != null) {
+				entities = (List<<ClassName></ClassName>>) map.get("List");
+				if (entities == null || entities.isEmpty()) {
+					theForm.setIsHaveRecords("0");
+				} else {
+					theForm.setIsHaveRecords("1");
+				}
+				theForm.setList(entities);
+				theForm.setPagetotal(((Integer) map.get("PageTotal")).intValue());
+				theForm.setRectotal(((Integer) map.get("RecTotal")).intValue());
+			}else {
+				theForm.setIsHaveRecords("0");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return mapping.findForward("success");
+	}
+}

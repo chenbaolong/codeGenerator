@@ -1,0 +1,67 @@
+package com.service;
+
+import java.util.Map;
+
+import com.jy.framework.exception.ServiceException;
+import com.dto.<ClassName></ClassName>DTO;
+import com.entity.<ClassName></ClassName>;
+
+public interface <ClassName></ClassName>Service {
+	/**
+	 * 获取问卷
+	 * <p>Title: get<ClassName></ClassName>List</p>
+	 * <p>Description:</p>
+	 * @param dto
+	 * @param pageno
+	 * @param pagesize
+	 * @return
+	 * @throws ServiceException
+	 * @author chenbl
+	 */
+	public Map get<ClassName></ClassName>List(<ClassName></ClassName>DTO dto,
+			int pageno, int pagesize) throws ServiceException;
+
+	/**
+	 * 新增
+	 * <p> Title: insert<ClassName></ClassName></p>
+	 * <p>Description:</p>
+	 * @param entity
+	 * @throws ServiceException
+	 * @author chenbl
+	 */
+	public void insert<ClassName></ClassName>(<ClassName></ClassName> entity)
+			throws ServiceException;
+
+	/**
+	 * 修改
+	 * <p> Title: insert<ClassName></ClassName></p>
+	 * <p>Description:</p>
+	 * @param entity
+	 * @throws ServiceException
+	 * @author chenbl
+	 */
+	public void update<ClassName></ClassName>(<ClassName></ClassName> results)
+			throws ServiceException;
+
+	/**
+	 * 获取详情
+	* <p> Title: insert<ClassName></ClassName></p>
+	 * <p>Description:</p>
+	 * @param id
+	 * @return
+	 * @throws ServiceException
+	 * @author chenbl
+	 */
+	public <ClassName></ClassName> get<ClassName></ClassName>(String id)
+			throws ServiceException;
+	/**
+	 * 删除
+	* <p>Title: dele<ClassName></ClassName></p>
+	* <p>Description: </p>
+	* @param id
+	* @throws ServiceException
+	* @author chenbl
+	 */
+	public void dele<ClassName></ClassName>(String id)
+	throws ServiceException;
+}

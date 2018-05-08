@@ -1,0 +1,75 @@
+package com.jy.mobile.service.question.impl;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.jy.framework.exception.ServiceException;
+import com.jy.framework.persistence.PersistenceManager;
+import com.jy.framework.persistence.jdbc.JDBCPersistenceManager;
+import com.dto.<ClassName></ClassName>DTO;
+import com.entity.<ClassName></ClassName>;
+import com.service.<ClassName></ClassName>Service;
+import com.jy.mobile.util.StringUtils;
+
+public class <ClassName></ClassName>ServiceImpl implements <ClassName></ClassName>Service {
+	private JDBCPersistenceManager jdbcPM;
+
+	public void setJdbcPM(JDBCPersistenceManager jdbcPM) {
+		this.jdbcPM = jdbcPM;
+	}
+
+	private PersistenceManager pm;
+
+	public void setPm(PersistenceManager pm) {
+		this.pm = pm;
+	}
+
+	@Override
+	public <ClassName></ClassName> get<ClassName></ClassName>(String id)
+			throws ServiceException {
+		<ClassName></ClassName> entity = (<ClassName></ClassName>) pm.getByPrimaryKey(
+				<ClassName></ClassName>.class, id);
+		return entity;
+
+	}
+
+	@Override
+	public Map get<ClassName></ClassName>List(<ClassName></ClassName>DTO dto,
+			int pageno, int pagesize) throws ServiceException {
+		StringBuffer sql = new StringBuffer();
+		Map<String, String> mapParam = new HashMap<String, String>();
+		int i = 0;
+		sql.append(" select t from <ClassName></ClassName> t where t.delflag = ? ");
+		mapParam.put(i++ + "", "0");
+		Map map = pm.getList(sql.toString(), mapParam, pageno, pagesize);
+		return map;
+
+	}
+
+	@Override
+	public void insert<ClassName></ClassName>(<ClassName></ClassName> entity)
+			throws ServiceException {
+		if (entity != null) {
+			entity.setCreatedDate(new Date());
+			entity.setDelflag("0");
+			pm.add(entity);
+		}
+	}
+
+	@Override
+	public void update<ClassName></ClassName>(<ClassName></ClassName> entity)
+			throws ServiceException {
+		if (entity != null) {
+			entity.setUpdatedDate(new Date());
+			pm.update(entity);
+		}
+	}
+
+	@Override
+	public void dele<ClassName></ClassName>(String id) throws ServiceException {
+		String sql = " update <TableName></TableName> set delflag = 1 where id ='"+id+"' ";
+		jdbcPM.execute(sql);
+	}
+
+}

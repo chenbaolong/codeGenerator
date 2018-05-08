@@ -1,0 +1,32 @@
+package com.form;
+
+<import></import>
+import java.util.List;
+
+public class <ClassName></ClassName>Form  extends BaseForm {
+	private List list;
+	
+	<content>
+		<property>
+			private <type></type> <name></name>; 
+		</property>
+		<get>
+			public <type></type> get<Name></Name>(){
+				return this.<name></name>;
+			}
+		</get>
+		<set>
+			public void set<Name></Name>(<type></type> <name></name>) {
+				this.<name></name> = <name></name>;
+			}
+		</set>
+	</content>
+	
+	public List getList() {
+		return list;
+	}
+
+	public void setList(List list) {
+		this.list = list;
+	}
+}

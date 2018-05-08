@@ -1,0 +1,21 @@
+package com.dto;
+
+<import></import>
+
+public class <ClassName></ClassName>DTO implements java.io.Serializable{
+	<content>
+		<property>
+			private <type></type> <name></name>; 
+		</property>
+		<get>
+			public <type></type> get<Name></Name>(){
+				return this.<name></name>;
+			}
+		</get>
+		<set>
+			public void set<Name></Name>(<type></type> <name></name>) {
+				this.<name></name> = <name></name>;
+			}
+		</set>
+	</content>
+}
